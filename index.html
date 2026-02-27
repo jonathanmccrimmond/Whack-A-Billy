@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whack a Logan: Arcade Edition</title>
+    <title>Whack-A-Billy</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -130,7 +130,7 @@
             createUI() {
                 const { width } = this.cameras.main;
                 
-                this.titleText = this.add.text(width / 2, 350, 'WHACK A LOGAN', { 
+                this.titleText = this.add.text(width / 2, 220, 'WHACK-A-BILLY', { 
                     fontFamily: 'Bungee', 
                     fontSize: '120px', 
                     fill: '#ffffff',
@@ -138,7 +138,7 @@
                     strokeThickness: 12
                 }).setOrigin(0.5);
 
-                this.scoreText = this.add.text(width / 2, 530, '00000', { 
+                this.scoreText = this.add.text(width / 2, 400, '00000', { 
                     fontFamily: 'Roboto Mono', 
                     fontSize: '140px', 
                     fill: '#00ffcc',
@@ -146,7 +146,7 @@
                     strokeThickness: 10
                 }).setOrigin(0.5);
 
-                this.timerText = this.add.text(width / 2, 670, '60', { 
+                this.timerText = this.add.text(width / 2, 540, '60', { 
                     fontSize: '100px', 
                     fill: '#ff0055',
                     stroke: '#000',
