@@ -61,7 +61,6 @@
                 this.load.image('shocked', 'shocked.png');
                 this.load.image('annoyed', 'annoyed.png');
                 this.load.image('sleeping', 'sleeping.png');
-                this.load.image('golden', 'golden.png');
 
                 // Generate a light dot-pattern texture
                 const dotSize = 4;
@@ -333,8 +332,7 @@
                 const typeRoll = Math.random();
                 
                 let type = 'normal';
-                if (typeRoll < 0.10) type = 'golden';
-                else if (typeRoll < 0.25) type = 'decoy';
+                if (typeRoll < 0.15) type = 'decoy';
 
                 // Create Spotlight
                 const spotlight = this.add.graphics();
@@ -391,9 +389,7 @@
                 const container = this.add.container(x, y + 50);
                 
                 let textureKey = 'calm';
-                if (type === 'golden') {
-                    textureKey = 'golden';
-                } else if (type === 'decoy') {
+                if (type === 'decoy') {
                     textureKey = 'sleeping';
                 } else {
                     if (this.combo >= 6) {
@@ -407,13 +403,6 @@
 
                 const img = this.add.image(0, 0, textureKey).setDisplaySize(220, 220);
                 container.add(img);
-
-                if (type === 'golden') {
-                    const glow = this.add.graphics();
-                    glow.lineStyle(8, 0xffffff, 0.8);
-                    glow.strokeCircle(0, 0, 110);
-                    container.add(glow);
-                }
 
                 if (type === 'decoy') {
                     const zText = this.add.text(20, -80, 'Zzz', { fontSize: '40px', fill: '#fff' });
@@ -461,15 +450,11 @@
                     this.combo++;
                     this.updateMultiplier();
                     
-                    let points = (type === 'golden') ? 5 : 1;
-                    const totalPoints = points * this.multiplier;
+                    const totalPoints = 1 * this.multiplier;
                     this.score += totalPoints;
                     
-                    if (type === 'golden') {
-                        this.showFloatingText(x, y, 'PERFECT!', '#ffff00', 1.5);
-                    }
-                    this.showFloatingText(x, y, `+${totalPoints}`, (type === 'golden') ? '#ffff00' : '#00ffcc');
-                    this.createExplosion(x, y, (type === 'golden') ? 0xffff00 : 0x00ffcc);
+                    this.showFloatingText(x, y, `+${totalPoints}`, '#00ffcc');
+                    this.createExplosion(x, y, 0x00ffcc);
                     
                     if (this.combo >= 3) {
                         this.comboContainer.setAlpha(1);
